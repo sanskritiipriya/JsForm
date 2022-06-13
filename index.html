@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="bootstrap.min.css.map">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript">
+        function check() {
+
+            var name = document.forms.RegForm.Name.value;
+            var email = document.forms.RegForm.Email.value;
+            var password = document.forms.RegForm.Password.value;
+            var phone = document.forms.RegForm.Telephone.value;
+            var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
+            var regPhone = /^\d{10}$/; // Javascript reGex for Phone Number validation.
+            var regName = /\d+$/g;
+
+            if (name == "" || regName.test(name)) {
+                window.alert("Please enter your name properly.");
+                name.focus();
+                return false;
+            }
+
+            if (email == "" || !regEmail.test(email)) {
+                window.alert("Please enter a valid e-mail address.");
+                email.focus();
+                return false;
+            }
+
+
+            if (password == "") {
+                alert("Please enter your password");
+                password.focus();
+                return false;
+            }
+
+            if (password.length < 8) {
+                alert("Password should be atleast 8 character long");
+                password.focus();
+                return false;
+
+            }
+            if (phone == "" || !regPhone.test(phone)) {
+                alert("Please enter valid phone number.");
+                phone.focus();
+                return false;
+            }
+
+
+        }
+    </script>
+
+
+
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="register">Login Form
+        </div>
+        <form action="login.php" method="get" name="RegForm">
+            <div class="user-detail">
+                <i class="fa fa-user icon"></i>
+                <input type="text" class="input-field" placeholder="Username" name="Name" required>
+            </div>
+            <div class="user-detail">
+                <i class="fa fa-envelope icon"></i>
+                <input type="email" class="input-field" placeholder="E-mail" name="Email" required>
+            </div>
+            <div class="user-detail">
+                <i class="fa fa-lock icon"></i>
+                <input type="password" class="input-field" placeholder="Password" name="Password" required>
+            </div>
+            <div class="user-detail">
+                <i class="fa fa-phone icon"></i>
+                <input type="text" class="input-field" placeholder="Mobile" name="Telephone" required>
+            </div>
+            <div class="form-group">
+                <label> 
+                    <input type="submit" class="form-control button" value="LOGIN" onclick="check();"> 
+                </label>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
